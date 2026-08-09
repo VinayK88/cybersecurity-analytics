@@ -25,6 +25,10 @@ Every project:
 | 9 | 09_prompt_injection_detection.ipynb | Prompt-injection detection for RAG | Text classification |
 | 10 | 10_cloud_iam_risk_scoring.ipynb | Cloud IAM risk scoring | Explainable risk modeling |
 
+## OSINT analytics
+
+The [`osint-analytics`](osint-analytics/) folder contains ten additional notebooks for ethical open-source intelligence analysis using synthetic, offline data.
+
 ## Run the notebooks
 
 1. Create and activate a Python virtual environment.
