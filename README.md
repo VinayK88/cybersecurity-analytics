@@ -1,6 +1,6 @@
 # Cybersecurity Analytics & AI
 
-Ten defensive Jupyter notebook projects covering security telemetry, machine learning, anomaly detection, graph analytics, and AI safety.
+Defensive Jupyter notebook projects covering security telemetry, machine learning, anomaly detection, graph analytics, and AI safety.
 
 Every project:
 
