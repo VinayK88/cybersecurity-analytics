@@ -8,6 +8,8 @@
 [![Jupyter](https://img.shields.io/badge/JupyterLab-4%2B-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![NumPy](https://img.shields.io/badge/NumPy-2%2B-013243?logo=numpy&logoColor=white)](https://numpy.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-2%2B-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.5%2B-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-3.9%2B-11557C)](https://matplotlib.org/)
 [![Projects](https://img.shields.io/badge/Notebooks-20-2088FF)](#project-catalog)
 [![Data](https://img.shields.io/badge/Data-synthetic%20%26%20offline-7B61FF)](#safety-and-scope)
 
@@ -21,7 +23,18 @@
 
 A portfolio of defensive Jupyter notebook projects spanning identity, network, email, DNS, endpoint, SIEM, threat intelligence, malware metadata, LLM security, cloud IAM, and ethical open-source intelligence.
 
-Every notebook is deterministic, runs offline, uses synthetic non-sensitive data, implements its core analytical method with **NumPy and Pandas**, and includes executable checks plus practical next steps.
+Every notebook is deterministic, runs offline, and uses synthetic non-sensitive data. Each one pairs an inspectable NumPy/Pandas baseline with polished Matplotlib visuals, a project-appropriate scikit-learn or graph-ML extension, concise analyst takeaways, executable checks, and practical next steps.
+
+## What is inside every notebook
+
+| Layer | What you get |
+| --- | --- |
+| Transparent baseline | A compact scoring, classification, clustering, anomaly, or graph method that is easy to inspect |
+| Visual story | Two or more purpose-built views of distributions, relationships, clusters, rankings, or model behavior |
+| Stronger ML | Held-out model comparisons, anomaly detection, model selection, spectral clustering, or surrogate auditing |
+| Explainability | Feature importance, influential terms, cluster profiles, centrality, or score sensitivity |
+| Analyst insights | Printed takeaways with operational interpretation and explicit limits |
+| Reproducibility | Fixed seeds, offline data generation, embedded outputs, and automated integrity checks |
 
 ## Portfolio at a glance
 
@@ -75,33 +88,33 @@ Open a notebook, choose **Run → Run All Cells**, and review the generated tabl
 
 ### Defensive security analytics
 
-| # | Notebook | Security problem | Core technique |
+| # | Notebook | Transparent baseline | Visual / ML extension |
 | ---: | --- | --- | --- |
-| 01 | [Authentication anomaly detection](notebooks/01_authentication_anomaly_detection.ipynb) | Rank suspicious sign-ins | Logistic regression from scratch |
-| 02 | [Network traffic clustering](notebooks/02_network_traffic_clustering.ipynb) | Discover traffic behaviors and scan-like clusters | K-means from scratch |
-| 03 | [Phishing email classifier](notebooks/03_phishing_email_classifier.ipynb) | Classify and explain suspicious email text | Bag-of-words Naive Bayes |
-| 04 | [DNS tunneling detection](notebooks/04_dns_tunneling_detection.ipynb) | Detect encoded or high-entropy DNS behavior | Entropy features + logistic regression |
-| 05 | [Endpoint process anomaly detection](notebooks/05_endpoint_process_anomaly_detection.ipynb) | Rank unusual process behavior | Mahalanobis distance |
-| 06 | [SIEM alert prioritization](notebooks/06_siem_alert_prioritization.ipynb) | Build an explainable analyst queue | Risk ranking + feature contributions |
-| 07 | [Threat-intelligence graph analytics](notebooks/07_threat_intelligence_graph_analytics.ipynb) | Find influential entities and evidence paths | PageRank + graph traversal |
-| 08 | [Malware static-feature classification](notebooks/08_malware_static_feature_classification.ipynb) | Classify safe PE-like metadata | Logistic regression from scratch |
-| 09 | [Prompt-injection detection](notebooks/09_prompt_injection_detection.ipynb) | Detect adversarial retrieved text | Text classification |
-| 10 | [Cloud IAM risk scoring](notebooks/10_cloud_iam_risk_scoring.ipynb) | Prioritize risky identities and policies | Explainable risk modeling |
+| 01 | [Authentication anomaly detection](notebooks/01_authentication_anomaly_detection.ipynb) | Logistic regression from scratch | Risk landscapes, random forest, held-out AP/AUC/F1, feature importance |
+| 02 | [Network traffic clustering](notebooks/02_network_traffic_clustering.ipynb) | K-means from scratch | Silhouette model selection, PCA map, cluster-profile heatmap |
+| 03 | [Phishing email classifier](notebooks/03_phishing_email_classifier.ipynb) | Bag-of-words Naive Bayes | Corpus diagnostics, TF-IDF logistic vs Naive Bayes, top n-grams |
+| 04 | [DNS tunneling detection](notebooks/04_dns_tunneling_detection.ipynb) | Entropy + logistic regression | Behavior plots, random-forest benchmark, feature importance |
+| 05 | [Endpoint process anomaly detection](notebooks/05_endpoint_process_anomaly_detection.ipynb) | Mahalanobis distance | Isolation Forest comparison and anomaly-score distributions |
+| 06 | [SIEM alert prioritization](notebooks/06_siem_alert_prioritization.ipynb) | Risk ranking + contributions | Held-out model comparison, review-decile lift, global importance |
+| 07 | [Threat-intelligence graph analytics](notebooks/07_threat_intelligence_graph_analytics.ipynb) | PageRank + graph traversal | Spectral graph clustering and community visualization |
+| 08 | [Malware static-feature classification](notebooks/08_malware_static_feature_classification.ipynb) | Logistic regression from scratch | Nonlinear benchmark, held-out metrics, global feature importance |
+| 09 | [Prompt-injection detection](notebooks/09_prompt_injection_detection.ipynb) | Bag-of-words text classification | TF-IDF bigrams, two-model benchmark, interpretable signal terms |
+| 10 | [Cloud IAM risk scoring](notebooks/10_cloud_iam_risk_scoring.ipynb) | Explainable logistic risk model | Review-decile lift, random forest, feature-importance analysis |
 
 ### Ethical OSINT analytics
 
-| # | Notebook | Investigation problem | Core technique |
+| # | Notebook | Transparent baseline | Visual / ML extension |
 | ---: | --- | --- | --- |
-| 01 | [Domain infrastructure correlation](osint-analytics/notebooks/01_domain_infrastructure_correlation.ipynb) | Rank shared-hosting pivots | Cluster aggregation + risk ranking |
-| 02 | [Certificate transparency patterns](osint-analytics/notebooks/02_certificate_transparency_patterns.ipynb) | Find unusual certificate reuse | Fingerprint clustering |
-| 03 | [Passive DNS flux detection](osint-analytics/notebooks/03_passive_dns_flux_detection.ipynb) | Prioritize fast-changing domains | Behavioral aggregation + scoring |
-| 04 | [Social coordination detection](osint-analytics/notebooks/04_social_coordination_detection.ipynb) | Surface coordinated public activity | Time-content pair matching |
-| 05 | [Public document metadata](osint-analytics/notebooks/05_public_document_metadata.ipynb) | Group metadata and identify hygiene risks | Metadata aggregation |
-| 06 | [Image geolocation confidence](osint-analytics/notebooks/06_image_geolocation_confidence.ipynb) | Combine uncertain location clues | Multi-signal evidence scoring |
-| 07 | [Privacy-preserving entity resolution](osint-analytics/notebooks/07_privacy_preserving_entity_resolution.ipynb) | Link candidate records without raw PII | Candidate-pair linkage scoring |
-| 08 | [News narrative trends](osint-analytics/notebooks/08_news_narrative_trends.ipynb) | Detect unusual narrative movement | Volume, diversity, and anomaly scoring |
-| 09 | [Web exposure profiling](osint-analytics/notebooks/09_web_exposure_profiling.ipynb) | Prioritize modeled public exposure | Explainable risk scoring |
-| 10 | [Incident timeline fusion](osint-analytics/notebooks/10_incident_timeline_fusion.ipynb) | Combine multi-source event evidence | Reliability-weighted fusion |
+| 01 | [Domain infrastructure correlation](osint-analytics/notebooks/01_domain_infrastructure_correlation.ipynb) | Shared-hosting aggregation | Held-out classifier comparison and feature importance |
+| 02 | [Certificate transparency patterns](osint-analytics/notebooks/02_certificate_transparency_patterns.ipynb) | Fingerprint-pattern score | Silhouette-selected clustering, PCA, profile heatmap |
+| 03 | [Passive DNS flux detection](osint-analytics/notebooks/03_passive_dns_flux_detection.ipynb) | Behavioral flux score | Synthetic benchmark labels, two-model comparison, ranking lift |
+| 04 | [Social coordination detection](osint-analytics/notebooks/04_social_coordination_detection.ipynb) | Time-content pair matching | Weighted graph view and spectral communities |
+| 05 | [Public document metadata](osint-analytics/notebooks/05_public_document_metadata.ipynb) | Metadata aggregation | K-means behavior groups and Isolation Forest anomalies |
+| 06 | [Image geolocation confidence](osint-analytics/notebooks/06_image_geolocation_confidence.ipynb) | Multi-signal evidence score | Score distribution and ML surrogate audit |
+| 07 | [Privacy-preserving entity resolution](osint-analytics/notebooks/07_privacy_preserving_entity_resolution.ipynb) | Candidate-pair linkage score | Logistic vs random forest with held-out evaluation |
+| 08 | [News narrative trends](osint-analytics/notebooks/08_news_narrative_trends.ipynb) | Volume and diversity scoring | Surge classifier benchmark and feature importance |
+| 09 | [Web exposure profiling](osint-analytics/notebooks/09_web_exposure_profiling.ipynb) | Explainable exposure score | Score diagnostics and two-model surrogate audit |
+| 10 | [Incident timeline fusion](osint-analytics/notebooks/10_incident_timeline_fusion.ipynb) | Reliability-weighted fusion | Evidence-space visuals and surrogate sensitivity analysis |
 
 See the [OSINT Analytics guide](osint-analytics/README.md) for collection-specific safety principles.
 
@@ -127,9 +140,11 @@ flowchart LR
     GOAL["1 · Security goal"] --> SETUP["2 · Deterministic setup"]
     SETUP --> DATA["3 · Synthetic dataset"]
     DATA --> METHOD["4 · Inspectable method"]
-    METHOD --> OUTPUT["5 · Metrics + ranked output"]
-    OUTPUT --> CHECKS{"6 · Executable checks"}
-    CHECKS --> NEXT["7 · Production next steps"]
+    METHOD --> VISUAL["5 · Visual story"]
+    VISUAL --> ML["6 · Stronger ML benchmark"]
+    ML --> OUTPUT["7 · Insights + ranked output"]
+    OUTPUT --> CHECKS{"8 · Executable checks"}
+    CHECKS --> NEXT["9 · Production next steps"]
 ```
 
 Each notebook contains these required sections:
@@ -138,6 +153,7 @@ Each notebook contains these required sections:
 ## Goal
 ## Setup
 ## Steps
+## Visual Insights & ML Extension
 ## Checks
 ## Next Steps
 ```
@@ -210,17 +226,18 @@ The validators:
 1. Confirm notebook format and required sections.
 2. Confirm the expected number of notebooks and code cells.
 3. Execute every code cell from top to bottom in an isolated namespace.
-4. Capture bounded text output inside the notebook.
-5. Stop with a traceback and non-zero exit if any cell fails.
+4. Render and embed every Matplotlib figure as PNG output for GitHub preview.
+5. Capture bounded text output inside the notebook.
+6. Stop with a traceback and non-zero exit if any cell fails.
 
 Expected final summaries include:
 
 ```text
-validated 10 notebooks and <code-cell count> code cells
-validated 10 notebooks and 40 code cells
+validated 10 notebooks, 50 code cells, and 19 embedded figures
+validated 10 notebooks, 50 code cells, and 18 embedded figures
 ```
 
-The second line corresponds to the OSINT collection, where every notebook has exactly four code cells.
+The second line corresponds to the OSINT collection; every notebook now has five executed code cells, including its visual and ML extension.
 
 ## Design choices
 
