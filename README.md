@@ -2,7 +2,7 @@
 
 # Cybersecurity Analytics & AI
 
-### 20 reproducible notebooks for defensive security analytics, machine learning, graphs, AI safety, and ethical OSINT
+### 25 reproducible notebooks for defensive analytics, red/blue teaming, machine learning, AI safety, and ethical OSINT
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/JupyterLab-4%2B-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -10,7 +10,7 @@
 [![Pandas](https://img.shields.io/badge/Pandas-2%2B-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.5%2B-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.9%2B-11557C)](https://matplotlib.org/)
-[![Projects](https://img.shields.io/badge/Notebooks-20-2088FF)](#project-catalog)
+[![Projects](https://img.shields.io/badge/Notebooks-25-2088FF)](#project-catalog)
 [![Data](https://img.shields.io/badge/Data-synthetic%20%26%20offline-7B61FF)](#safety-and-scope)
 
 **Generate · model · explain · validate · extend**
@@ -21,7 +21,7 @@
 
 ---
 
-A portfolio of defensive Jupyter notebook projects spanning identity, network, email, DNS, endpoint, SIEM, threat intelligence, malware metadata, LLM security, cloud IAM, and ethical open-source intelligence.
+A portfolio of Jupyter notebook projects spanning identity, network, email, DNS, endpoint, SIEM, threat intelligence, malware metadata, LLM security, cloud IAM, ethical open-source intelligence, and safe red/blue-team validation.
 
 Every notebook is deterministic, runs offline, and uses synthetic non-sensitive data. Each one pairs an inspectable NumPy/Pandas baseline with polished Matplotlib visuals, a project-appropriate scikit-learn or graph-ML extension, concise analyst takeaways, executable checks, and practical next steps.
 
@@ -47,6 +47,7 @@ flowchart LR
     ROOT --> GRAPH["Graph + evidence analytics"]
     ROOT --> AI["AI / agent safety"]
     ROOT --> OSINT["Ethical OSINT analytics"]
+    ROOT --> PURPLE["Red + blue team analytics"]
 
     DETECT --> AUTH["Authentication"]
     DETECT --> NET["Network + DNS"]
@@ -62,13 +63,18 @@ flowchart LR
     OSINT --> INFRA["Domain / certificate / DNS"]
     OSINT --> PEOPLE["Privacy-preserving entity resolution"]
     OSINT --> FUSION["Narratives + incident timelines"]
+
+    PURPLE --> RED["Emulation planning + control tests"]
+    PURPLE --> BLUE["Detection tuning + incident correlation"]
+    PURPLE --> LOOP["Detection validation learning loop"]
 ```
 
 | Collection | Notebooks | Focus |
 | --- | ---: | --- |
 | `notebooks/` | 10 | Defensive cyber telemetry, ML, prioritization, graphs, and AI safety |
 | `osint-analytics/notebooks/` | 10 | Ethical infrastructure, public-source, privacy, and evidence-fusion analytics |
-| **Total** | **20** | Fully synthetic and offline |
+| `purple-team/notebooks/` | 5 | Safe red-team planning, blue-team detection engineering, and joint validation |
+| **Total** | **25** | Fully synthetic and offline |
 
 ## Quick start
 
@@ -101,6 +107,16 @@ Open a notebook, choose **Run → Run All Cells**, and review the generated tabl
 | 09 | [Prompt-injection detection](notebooks/09_prompt_injection_detection.ipynb) | Bag-of-words text classification | TF-IDF bigrams, two-model benchmark, interpretable signal terms |
 | 10 | [Cloud IAM risk scoring](notebooks/10_cloud_iam_risk_scoring.ipynb) | Explainable logistic risk model | Review-decile lift, random forest, feature-importance analysis |
 
+### Red team, blue team & purple team
+
+| # | Track | Notebook | Transparent baseline | Visual / ML extension |
+| ---: | --- | --- | --- | --- |
+| 01 | Red | [Attack-path emulation planning](purple-team/notebooks/01_red_team_attack_path_emulation_planning.ipynb) | Value-to-effort scenario ranking | Tactic priorities, workload guardrail, logistic vs forest, feature importance |
+| 02 | Red | [Social-engineering control evaluation](purple-team/notebooks/02_red_team_social_engineering_control_evaluation.ipynb) | Layered control-gap score | Channel outcomes, signal heatmap, bypass-model benchmark, global drivers |
+| 03 | Blue | [Detection threshold tuning](purple-team/notebooks/03_blue_team_detection_threshold_tuning.ipynb) | Explainable multi-signal rule score | Precision–recall, analyst-capacity frontier, equal-budget ML comparison |
+| 04 | Blue | [Incident correlation](purple-team/notebooks/04_blue_team_incident_correlation.ipynb) | Time/entity/source correlation | Incident timeline, coverage heatmap, group-aware holdout, global drivers |
+| 05 | Purple | [Detection validation](purple-team/notebooks/05_purple_team_detection_validation.ipynb) | Coverage and residual-risk score | Detection matrix, calibration, held-out ML, remediation queue |
+
 ### Ethical OSINT analytics
 
 | # | Notebook | Transparent baseline | Visual / ML extension |
@@ -117,6 +133,7 @@ Open a notebook, choose **Run → Run All Cells**, and review the generated tabl
 | 10 | [Incident timeline fusion](osint-analytics/notebooks/10_incident_timeline_fusion.ipynb) | Reliability-weighted fusion | Evidence-space visuals and surrogate sensitivity analysis |
 
 See the [OSINT Analytics guide](osint-analytics/README.md) for collection-specific safety principles.
+See the [Red/Blue/Purple Team guide](purple-team/README.md) for the joint learning loop, project decisions, and authorization boundary.
 
 ## Choose a project
 
@@ -127,6 +144,10 @@ See the [OSINT Analytics guide](osint-analytics/README.md) for collection-specif
 | Distance-based anomaly detection | Endpoint process anomalies |
 | Explainable operational prioritization | SIEM alerts or cloud IAM risk |
 | Graph reasoning | Threat-intelligence graph analytics |
+| Authorized adversary-emulation planning | Red-team attack-path planning |
+| Detection engineering under analyst constraints | Blue-team threshold tuning |
+| Multi-source incident response | Blue-team incident correlation |
+| Red/blue detection validation | Purple-team detection validation |
 | Infrastructure investigation | Domain, certificate, or passive-DNS notebooks |
 | Responsible public-source analysis | Privacy-preserving entity resolution or metadata analysis |
 | Multi-source uncertainty | Image geolocation confidence or incident timeline fusion |
@@ -221,6 +242,13 @@ python osint-analytics/build_notebooks.py
 python osint-analytics/validate_notebooks.py
 ```
 
+### Red/blue/purple team collection
+
+```bash
+python purple-team/build_notebooks.py
+python purple-team/validate_notebooks.py
+```
+
 The validators:
 
 1. Confirm notebook format and required sections.
@@ -235,9 +263,10 @@ Expected final summaries include:
 ```text
 validated 10 notebooks, 50 code cells, and 19 embedded figures
 validated 10 notebooks, 50 code cells, and 18 embedded figures
+validated 5 notebooks, 25 code cells, and 5 embedded figures
 ```
 
-The second line corresponds to the OSINT collection; every notebook now has five executed code cells, including its visual and ML extension.
+The second line corresponds to the OSINT collection and the third to the red/blue/purple-team collection. Every notebook has five executed code cells, including its visual and ML extension.
 
 ## Design choices
 
@@ -272,6 +301,11 @@ High scores on synthetic data do not establish real-world effectiveness. Before 
 │   ├── build_notebooks.py
 │   ├── validate_notebooks.py
 │   └── README.md
+├── purple-team/
+│   ├── notebooks/                # 5 red, blue, and purple-team analytics notebooks
+│   ├── build_notebooks.py
+│   ├── validate_notebooks.py
+│   └── README.md
 ├── requirements.txt
 └── README.md
 ```
@@ -289,4 +323,4 @@ When adapting a notebook to a public or authorized dataset:
 
 ## Safety and scope
 
-All bundled data is deterministic and synthetic. The projects focus on defensive detection, triage, risk analysis, and ethical OSINT. They perform no malware execution, exploitation, credential collection, live scraping, authentication, tracking, or external enrichment. Outputs are analytical demonstrations—not attribution or production-performance claims.
+All bundled data is deterministic and synthetic. The projects focus on defensive detection, triage, risk analysis, ethical OSINT, authorized-emulation planning, and control validation. They perform no malware execution, exploitation, credential collection, live scraping, authentication, tracking, targeting, or external enrichment. Outputs are analytical demonstrations—not attribution, authorization, or production-performance claims.
