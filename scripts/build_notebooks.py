@@ -4,6 +4,8 @@ import json
 import textwrap
 from pathlib import Path
 
+from notebook_enhancements import enhancement_cells
+
 
 ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK_DIR = ROOT / "notebooks"
@@ -32,6 +34,8 @@ def code(text: str) -> dict:
 
 
 def notebook(cells: list[dict]) -> dict:
+    for index, cell in enumerate(cells, start=1):
+        cell["id"] = f"cell-{index:02d}"
     return {
         "cells": cells,
         "metadata": {
@@ -1332,8 +1336,18 @@ def main() -> None:
     NOTEBOOK_DIR.mkdir(parents=True, exist_ok=True)
     for filename, builder in PROJECTS.items():
         destination = NOTEBOOK_DIR / filename
+        payload = builder()
+        checks_index = next(
+            index
+            for index, cell in enumerate(payload["cells"])
+            if cell.get("cell_type") == "markdown"
+            and "## Checks" in "".join(cell.get("source", []))
+        )
+        payload["cells"][checks_index:checks_index] = enhancement_cells(filename, markdown, code)
+        for index, cell in enumerate(payload["cells"], start=1):
+            cell["id"] = f"cell-{index:02d}"
         destination.write_text(
-            json.dumps(builder(), indent=1, ensure_ascii=False) + "\n",
+            json.dumps(payload, indent=1, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
         print(f"built {destination.relative_to(ROOT)}")

@@ -4,6 +4,8 @@ import json
 import textwrap
 from pathlib import Path
 
+from notebook_enhancements import enhancement_cells
+
 
 ROOT = Path(__file__).resolve().parent
 NOTEBOOK_DIR = ROOT / "notebooks"
@@ -32,6 +34,8 @@ def code(text: str) -> dict:
 
 
 def notebook(cells: list[dict]) -> dict:
+    for index, cell in enumerate(cells, start=1):
+        cell["id"] = f"cell-{index:02d}"
     return {
         "cells": cells,
         "metadata": {
@@ -498,6 +502,7 @@ def build_project(project: dict) -> dict:
         code(project["data"]),
         markdown("### 2. Analyze and rank the observations"),
         code(project["analysis"]),
+        *enhancement_cells(project["filename"], markdown, code),
         markdown("## Checks\n\nRun deterministic integrity and reasonableness checks."),
         code(project["checks"]),
         markdown(f"## Next Steps\n\n{next_steps}"),
