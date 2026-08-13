@@ -6,6 +6,45 @@ A Swift 6 package that turns replayed or explicitly authorized macOS security me
 [![Platform](https://img.shields.io/badge/platform-macOS%2013%2B-111827?logo=apple&logoColor=white)](Package.swift)
 [![Mode](https://img.shields.io/badge/public%20mode-deterministic%20replay-7B61FF)](#endpoint-security-boundary)
 
+## Explain it like I'm 5
+
+Imagine your Mac is a house and MacSentinel is a tiny, careful security guard.
+
+When something happens in the house—like a program opening a file—the guard writes a small note. Before sharing the note, the guard replaces private names and addresses with secret labels. The guard then puts the safe note in a tray so a detective can look for unusual behavior later.
+
+```mermaid
+flowchart LR
+    MAC["🍎 Mac<br/>Something happens"] --> GUARD["🛡️ Guard<br/>Checks the event"]
+    GUARD --> MASK["🎭 Privacy mask<br/>Hides names and paths"]
+    MASK --> TRAY["📥 Small event tray<br/>Never grows forever"]
+    TRAY --> DETECTIVE["🔎 Security tools<br/>Look for danger"]
+
+    style MAC fill:#fff7ed,stroke:#f97316,color:#7c2d12
+    style GUARD fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style MASK fill:#fef2f2,stroke:#ef4444,color:#7f1d1d
+    style TRAY fill:#fff7ed,stroke:#f97316,color:#7c2d12
+    style DETECTIVE fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+```
+
+### A tiny example
+
+Suppose a practice event says:
+
+> **Vinay's Mac** opened `/Users/vinay/SecretPlans.txt` using `/Applications/Preview.app`.
+
+MacSentinel turns it into a safer note like:
+
+> **host_8a12…** opened **file_91bc…** using `Preview.app`.
+
+The detective can still tell that one computer opened one file with Preview, but the real computer name and file location are not exposed.
+
+### What it does—and does not do
+
+- **It does:** prepare privacy-safe macOS event data for security analytics and machine-learning experiments.
+- **It does:** keep its waiting tray bounded, measure performance, and report if events are dropped.
+- **It does not:** read file contents, messages, passwords, clipboard data, or other secret material.
+- **Today:** the public demo replays pretend events from a checked-in CSV file. Live Apple Endpoint Security collection requires Apple's entitlement, signing, and a separately reviewed adapter.
+
 ## What it proves
 
 - Native Swift ingestion and schema validation
