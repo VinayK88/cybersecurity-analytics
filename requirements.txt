@@ -4,3 +4,5 @@ matplotlib>=3.9
 scikit-learn>=1.5
 networkx>=3.3
 jupyterlab>=4.0
+pillow>=10.4
+streamlit>=1.37

@@ -2,7 +2,7 @@
 
 # Cybersecurity Analytics & AI
 
-### 25 reproducible notebooks for defensive analytics, red/blue teaming, machine learning, AI safety, and ethical OSINT
+### 31 reproducible notebooks plus an analyst app for cybersecurity analytics, ML, AI safety, and macOS security
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/JupyterLab-4%2B-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -10,7 +10,8 @@
 [![Pandas](https://img.shields.io/badge/Pandas-2%2B-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.5%2B-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.9%2B-11557C)](https://matplotlib.org/)
-[![Projects](https://img.shields.io/badge/Notebooks-25-2088FF)](#project-catalog)
+[![Streamlit](https://img.shields.io/badge/Streamlit-analyst%20app-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Projects](https://img.shields.io/badge/Notebooks-31-2088FF)](#project-catalog)
 [![Data](https://img.shields.io/badge/Data-synthetic%20%26%20offline-7B61FF)](#safety-and-scope)
 
 **Generate · model · explain · validate · extend**
@@ -21,9 +22,9 @@
 
 ---
 
-A portfolio of Jupyter notebook projects spanning identity, network, email, DNS, endpoint, SIEM, threat intelligence, malware metadata, LLM security, cloud IAM, ethical open-source intelligence, and safe red/blue-team validation.
+A portfolio of Jupyter notebook projects spanning identity, network, email, DNS, endpoint, SIEM, threat intelligence, malware metadata, LLM security, cloud IAM, ethical open-source intelligence, safe red/blue-team validation, and macOS security research.
 
-Every notebook is deterministic, runs offline, and uses synthetic non-sensitive data. Each one pairs an inspectable NumPy/Pandas baseline with polished Matplotlib visuals, a project-appropriate scikit-learn or graph-ML extension, concise analyst takeaways, executable checks, and practical next steps.
+Every notebook is deterministic, runs offline, and uses synthetic non-sensitive data. Each one pairs an inspectable NumPy/Pandas baseline with polished static visuals, a project-appropriate ML or graph extension, concise analyst takeaways, executable checks, and practical next steps.
 
 ## What is inside every notebook
 
@@ -48,6 +49,7 @@ flowchart LR
     ROOT --> AI["AI / agent safety"]
     ROOT --> OSINT["Ethical OSINT analytics"]
     ROOT --> PURPLE["Red + blue team analytics"]
+    ROOT --> MAC["macOS security + streaming ML"]
 
     DETECT --> AUTH["Authentication"]
     DETECT --> NET["Network + DNS"]
@@ -67,6 +69,10 @@ flowchart LR
     PURPLE --> RED["Emulation planning + control tests"]
     PURPLE --> BLUE["Detection tuning + incident correlation"]
     PURPLE --> LOOP["Detection validation learning loop"]
+
+    MAC --> PROV["Process provenance graphs"]
+    MAC --> STREAM["GRU + temporal graph ML"]
+    MAC --> ROBUST["Drift + mimicry gates"]
 ```
 
 | Collection | Notebooks | Focus |
@@ -74,7 +80,14 @@ flowchart LR
 | `notebooks/` | 10 | Defensive cyber telemetry, ML, prioritization, graphs, and AI safety |
 | `osint-analytics/notebooks/` | 10 | Ethical infrastructure, public-source, privacy, and evidence-fusion analytics |
 | `purple-team/notebooks/` | 5 | Safe red-team planning, blue-team detection engineering, and joint validation |
-| **Total** | **25** | Fully synthetic and offline |
+| `macsentinel/notebooks/` | 6 | macOS telemetry, provenance graphs, streaming ML, and adversarial robustness |
+| **Total** | **31** | Fully synthetic and offline, plus a Streamlit analyst app |
+
+### Flagship analyst app · MacSentinel
+
+[![MacSentinel dashboard with macOS threat scores and scenario analytics](macsentinel/assets/macsentinel-dashboard.png)](macsentinel/README.md)
+
+Use the interactive dashboard to filter synthetic Mac telemetry, tune the alert threshold, inspect an evidence graph, and open a prioritized investigation queue. The accompanying notebooks expose every feature, model, limitation, and robustness gate.
 
 ## Quick start
 
@@ -117,6 +130,19 @@ Open a notebook, choose **Run → Run All Cells**, and review the generated tabl
 | 04 | Blue | [Incident correlation](purple-team/notebooks/04_blue_team_incident_correlation.ipynb) | Time/entity/source correlation | Incident timeline, coverage heatmap, group-aware holdout, global drivers |
 | 05 | Purple | [Detection validation](purple-team/notebooks/05_purple_team_detection_validation.ipynb) | Coverage and residual-risk score | Detection matrix, calibration, held-out ML, remediation queue |
 
+### macOS security · MacSentinel
+
+| # | Notebook | Transparent baseline | Visual / ML extension |
+| ---: | --- | --- | --- |
+| 01 | [macOS telemetry EDA](macsentinel/notebooks/01_macos_telemetry_eda.ipynb) | Schema and coverage checks | Signal matrix, scenario distribution, event timeline |
+| 02 | [Provenance graph investigation](macsentinel/notebooks/02_provenance_graph_investigation.ipynb) | Directed entity edge list | Investigation graph, centrality, message passing |
+| 03 | [Streaming anomaly detection](macsentinel/notebooks/03_streaming_anomaly_detection.ipynb) | Robust multivariate anomaly score | Host holdout, logistic benchmark, capacity-aware threshold |
+| 04 | [GRU sequence detection](macsentinel/notebooks/04_gru_sequence_detection.ipynb) | Inspectable GRU cell | Learned detection head, embedding projection, scenario recall |
+| 05 | [Temporal graph ML](macsentinel/notebooks/05_temporal_graph_ml.ipynb) | Iterative message passing | Graph-augmented model, explanations, analyst queue |
+| 06 | [Adversarial robustness and drift](macsentinel/notebooks/06_adversarial_robustness_and_drift.ipynb) | PSI and release gates | Concept drift, mimicry attack, privacy checks |
+
+Open the [MacSentinel guide](macsentinel/README.md) for the Streamlit app, architecture, model card, and Apple platform boundary.
+
 ### Ethical OSINT analytics
 
 | # | Notebook | Transparent baseline | Visual / ML extension |
@@ -148,6 +174,7 @@ See the [Red/Blue/Purple Team guide](purple-team/README.md) for the joint learni
 | Detection engineering under analyst constraints | Blue-team threshold tuning |
 | Multi-source incident response | Blue-team incident correlation |
 | Red/blue detection validation | Purple-team detection validation |
+| macOS endpoint security and streaming ML | MacSentinel telemetry, sequence, graph, and robustness notebooks |
 | Infrastructure investigation | Domain, certificate, or passive-DNS notebooks |
 | Responsible public-source analysis | Privacy-preserving entity resolution or metadata analysis |
 | Multi-source uncertainty | Image geolocation confidence or incident timeline fusion |
@@ -249,12 +276,21 @@ python purple-team/build_notebooks.py
 python purple-team/validate_notebooks.py
 ```
 
+### MacSentinel macOS security lab
+
+```bash
+python -m macsentinel.build_notebooks
+python -m macsentinel.validate_notebooks
+python -m unittest discover -s macsentinel/tests -v
+streamlit run macsentinel/app.py
+```
+
 The validators:
 
 1. Confirm notebook format and required sections.
 2. Confirm the expected number of notebooks and code cells.
 3. Execute every code cell from top to bottom in an isolated namespace.
-4. Render and embed every Matplotlib figure as PNG output for GitHub preview.
+4. Render and embed every Matplotlib or Pillow figure as PNG output for GitHub preview.
 5. Capture bounded text output inside the notebook.
 6. Stop with a traceback and non-zero exit if any cell fails.
 
@@ -264,9 +300,10 @@ Expected final summaries include:
 validated 10 notebooks, 50 code cells, and 19 embedded figures
 validated 10 notebooks, 50 code cells, and 18 embedded figures
 validated 5 notebooks, 25 code cells, and 5 embedded figures
+validated 6 notebooks with 13 embedded figures
 ```
 
-The second line corresponds to the OSINT collection and the third to the red/blue/purple-team collection. Every notebook has five executed code cells, including its visual and ML extension.
+The second line corresponds to OSINT, the third to red/blue/purple-team analytics, and the fourth to MacSentinel. The MacSentinel notebooks add deeper sequence, graph, drift, and adversarial-evaluation workflows.
 
 ## Design choices
 
@@ -305,6 +342,14 @@ High scores on synthetic data do not establish real-world effectiveness. Before 
 │   ├── notebooks/                # 5 red, blue, and purple-team analytics notebooks
 │   ├── build_notebooks.py
 │   ├── validate_notebooks.py
+│   └── README.md
+├── macsentinel/
+│   ├── app.py                    # Interactive macOS analyst workbench
+│   ├── core.py                   # Synthetic telemetry + lightweight ML
+│   ├── visuals.py                # GitHub-friendly visual renderer
+│   ├── notebooks/                # 6 executed macOS security notebooks
+│   ├── data/                     # Deterministic synthetic fixture
+│   ├── tests/                    # Core, privacy, leakage, and robustness checks
 │   └── README.md
 ├── requirements.txt
 └── README.md
