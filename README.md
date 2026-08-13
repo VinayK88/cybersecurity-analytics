@@ -2,7 +2,7 @@
 
 # Cybersecurity Analytics & AI
 
-### 31 reproducible notebooks plus an analyst app for cybersecurity analytics, ML, AI safety, and macOS security
+### 32 reproducible notebooks plus analyst apps for cybersecurity analytics, ML, AI safety, identity, and macOS security
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/JupyterLab-4%2B-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -12,7 +12,7 @@
 [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.9%2B-11557C)](https://matplotlib.org/)
 [![Swift](https://img.shields.io/badge/Swift-native%20macOS%20sensor-F05138?logo=swift&logoColor=white)](macsentinel/sensor-swift/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-analyst%20app-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![Projects](https://img.shields.io/badge/Notebooks-31-2088FF)](#project-catalog)
+[![Projects](https://img.shields.io/badge/Notebooks-32-2088FF)](#project-catalog)
 [![Data](https://img.shields.io/badge/Data-synthetic%20%26%20offline-7B61FF)](#safety-and-scope)
 
 **Generate · model · explain · validate · extend**
@@ -23,7 +23,7 @@
 
 ---
 
-A portfolio of Jupyter notebook projects spanning identity, network, email, DNS, endpoint, SIEM, threat intelligence, malware metadata, LLM security, cloud IAM, ethical open-source intelligence, safe red/blue-team validation, and macOS security research.
+A portfolio of Jupyter notebook projects spanning identity, network, email, DNS, endpoint, SIEM, threat intelligence, malware metadata, LLM security, cloud IAM, ethical open-source intelligence, safe red/blue-team validation, macOS security research, and cross-surface identity and agentic-attack detection.
 
 Every notebook is deterministic, runs offline, and uses synthetic non-sensitive data. Each one pairs an inspectable NumPy/Pandas baseline with polished static visuals, a project-appropriate ML or graph extension, concise analyst takeaways, executable checks, and practical next steps.
 
@@ -51,6 +51,7 @@ flowchart LR
     ROOT --> OSINT["Ethical OSINT analytics"]
     ROOT --> PURPLE["Red + blue team analytics"]
     ROOT --> MAC["macOS security + streaming ML"]
+    ROOT --> ATTACKPATH["Identity + agentic attack paths"]
 
     DETECT --> AUTH["Authentication"]
     DETECT --> NET["Network + DNS"]
@@ -74,6 +75,10 @@ flowchart LR
     MAC --> PROV["Process provenance graphs"]
     MAC --> STREAM["GRU + temporal graph ML"]
     MAC --> ROBUST["Drift + mimicry gates"]
+
+    ATTACKPATH --> TOKEN["Token theft + session replay"]
+    ATTACKPATH --> OIDC["OIDC + cloud privilege"]
+    ATTACKPATH --> TOOLS["Prompt injection + tool abuse"]
 ```
 
 | Collection | Notebooks | Focus |
@@ -82,13 +87,20 @@ flowchart LR
 | `osint-analytics/notebooks/` | 10 | Ethical infrastructure, public-source, privacy, and evidence-fusion analytics |
 | `purple-team/notebooks/` | 5 | Safe red-team planning, blue-team detection engineering, and joint validation |
 | `macsentinel/notebooks/` | 6 | macOS telemetry, provenance graphs, streaming ML, and adversarial robustness |
-| **Total** | **31** | Fully synthetic and offline, plus a Streamlit analyst app |
+| `attackpath-ai/notebooks/` | 1 | Identity compromise, cloud pivots, agent-tool abuse, attack-path metrics |
+| **Total** | **32** | Fully synthetic and offline, plus interactive analyst apps |
 
 ### Flagship analyst app · MacSentinel
 
 [![MacSentinel dashboard with macOS threat scores and scenario analytics](macsentinel/assets/macsentinel-dashboard.png)](macsentinel/README.md)
 
 Use the interactive dashboard to filter synthetic Mac telemetry, tune the alert threshold, inspect an evidence graph, and open a prioritized investigation queue. A compiled [Swift native sensor](macsentinel/sensor-swift/) adds privacy filtering, bounded buffering, performance benchmarks, and an authorized Endpoint Security metadata boundary. The accompanying notebooks expose every feature, model, limitation, and robustness gate.
+
+### Current-threat lab · AttackPath AI
+
+[![AttackPath AI identity and agentic-attack detection dashboard](attackpath-ai/assets/dashboard-preview.svg)](attackpath-ai/README.md)
+
+[AttackPath AI](attackpath-ai/README.md) connects synthetic identity, endpoint, GitHub, cloud, SaaS, and AI-agent activity into complete attack paths. It combines explainable rules with an inspectable logistic model, maps findings to MITRE ATT&CK and OWASP Agentic risks, and reports precision, recall, time-to-detect, and whether each chain is found before exfiltration.
 
 ## Quick start
 
@@ -105,6 +117,12 @@ jupyter lab
 Open a notebook, choose **Run → Run All Cells**, and review the generated tables, metrics, ranked findings, checks, and next steps.
 
 ## Project catalog
+
+### Identity and agentic-attack detection
+
+| # | Project | Transparent baseline | Visual / ML extension |
+| ---: | --- | --- | --- |
+| 01 | [AttackPath AI detection lab](attackpath-ai/notebooks/01_identity_agent_attack_detection.ipynb) | Cross-source rules and attack-chain reconstruction | Logistic risk model, score distribution, path timeline, confusion matrix, Streamlit SOC queue |
 
 ### Defensive security analytics
 
@@ -176,6 +194,7 @@ See the [Red/Blue/Purple Team guide](purple-team/README.md) for the joint learni
 | Multi-source incident response | Blue-team incident correlation |
 | Red/blue detection validation | Purple-team detection validation |
 | macOS endpoint security and streaming ML | MacSentinel telemetry, sequence, graph, and robustness notebooks |
+| Current identity and AI-agent attack paths | AttackPath AI detection lab and SOC dashboard |
 | Infrastructure investigation | Domain, certificate, or passive-DNS notebooks |
 | Responsible public-source analysis | Privacy-preserving entity resolution or metadata analysis |
 | Multi-source uncertainty | Image geolocation confidence or incident timeline fusion |
