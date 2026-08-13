@@ -27,6 +27,50 @@ A portfolio of Jupyter notebook projects spanning identity, network, email, DNS,
 
 Every notebook is deterministic, runs offline, and uses synthetic non-sensitive data. Each one pairs an inspectable NumPy/Pandas baseline with polished static visuals, a project-appropriate ML or graph extension, concise analyst takeaways, executable checks, and practical next steps.
 
+## Explain the whole project like I'm 5
+
+Imagine computers are a big town. Sometimes the town gets strange visitors, fake messages, stolen keys, or mischievous robots.
+
+This repository is a **training school for cyber detectives**. It creates pretend clues, teaches the computer to notice unusual patterns, draws pictures of what happened, and helps a human decide what to investigate. It is like practicing with toy mysteries before working with real security data.
+
+```mermaid
+flowchart LR
+    MYSTERY["🎭 Pretend cyber mystery"] --> CLUES["🧩 Safe synthetic clues"]
+    CLUES --> BOOKS["📓 32 practice notebooks"]
+    BOOKS --> HELPERS["🔎 Rules + ML helpers"]
+    HELPERS --> MAPS["🗺️ Charts + attack maps"]
+    MAPS --> HUMAN["🧑‍💻 Human defender decides"]
+
+    style MYSTERY fill:#fff7ed,stroke:#f97316,color:#7c2d12
+    style CLUES fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style BOOKS fill:#ffffff,stroke:#3157a4,color:#172033
+    style HELPERS fill:#dbeafe,stroke:#3157a4,color:#172033
+    style MAPS fill:#fff7ed,stroke:#f97316,color:#7c2d12
+    style HUMAN fill:#dbeafe,stroke:#3157a4,color:#172033
+```
+
+### What are all the folders?
+
+| Part | Like you're 5 | What it teaches |
+| --- | --- | --- |
+| `notebooks/` | Detective practice books | Spot unusual logins, networks, phishing, malware clues, and risky cloud access |
+| `osint-analytics/` | Looking for safe clues in public places | Connect public infrastructure and evidence without exposing private people |
+| `purple-team/` | A supervised fire drill | Let red and blue teams safely test whether defenses notice pretend attacks |
+| `macsentinel/` | A careful guard for a Mac | Study macOS events, privacy filters, streaming detection, and attack graphs |
+| `attackpath-ai/` | A map of footprints through many rooms | Join identity, endpoint, GitHub, cloud, SaaS, and AI-agent clues into one attack story |
+| Streamlit apps | The detective's control room | Filter alerts, inspect evidence, tune thresholds, and choose what to review first |
+
+### What happens in one practice case?
+
+1. The project creates a **pretend security event**—never a real victim or password.
+2. A simple rule gives an understandable first opinion.
+3. A machine-learning helper looks for patterns that are harder to notice manually.
+4. Charts and graphs show the evidence instead of hiding it inside code.
+5. Tests check whether the result is reproducible and whether important attacks were found.
+6. A human analyst makes the final decision; the model does not punish users or attack systems.
+
+> **Safety promise:** these projects use synthetic or explicitly authorized data. They do not send phishing, steal credentials, deploy malware, exploit targets, or autonomously take destructive action.
+
 ## What is inside every notebook
 
 | Layer | What you get |
