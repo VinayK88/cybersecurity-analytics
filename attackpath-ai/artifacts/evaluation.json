@@ -1,0 +1,3537 @@
+{
+  "metadata": {
+    "dataset": "deterministic synthetic identity, cloud, endpoint, SaaS, and AI-agent telemetry",
+    "seed": 42,
+    "threshold": 0.52,
+    "generated_at": "deterministic-build",
+    "safety": "simulation only; no live credentials, phishing, exploitation, or external connections"
+  },
+  "counts": {
+    "events": 936,
+    "attack_events": 216,
+    "benign_events": 720,
+    "alerts": 200,
+    "high_or_critical_alerts": 153,
+    "attack_paths": 36
+  },
+  "test_metrics": {
+    "tp": 55,
+    "fp": 0,
+    "tn": 228,
+    "fn": 6,
+    "precision": 1.0,
+    "recall": 0.9016393442622951,
+    "f1": 0.9482758620689655,
+    "accuracy": 0.9792387543252595
+  },
+  "operational_metrics": {
+    "mean_minutes_to_detect": 4.0,
+    "median_minutes_to_detect": 0.0,
+    "paths_prevented_before_exfiltration": 36,
+    "path_prevention_rate": 1.0
+  },
+  "scenario_metrics": {
+    "device_code_phishing": {
+      "tp": 21,
+      "fp": 0,
+      "tn": 0,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.9130434782608695,
+      "f1": 0.9545454545454545,
+      "accuracy": 0.9130434782608695
+    },
+    "infostealer_cloud_pivot": {
+      "tp": 14,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    },
+    "prompt_injection_tool_abuse": {
+      "tp": 20,
+      "fp": 0,
+      "tn": 0,
+      "fn": 4,
+      "precision": 1.0,
+      "recall": 0.8333333333333334,
+      "f1": 0.9090909090909091,
+      "accuracy": 0.8333333333333334
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "tool_risk",
+      "absolute_weight": 1.5654784234819241
+    },
+    {
+      "feature": "device_risk",
+      "absolute_weight": 1.4461900149872569
+    },
+    {
+      "feature": "rule_score",
+      "absolute_weight": 0.7030189136499854
+    },
+    {
+      "feature": "token_age",
+      "absolute_weight": 0.4991486244244991
+    },
+    {
+      "feature": "weak_mfa",
+      "absolute_weight": 0.4712801373752451
+    },
+    {
+      "feature": "unusual_location",
+      "absolute_weight": 0.4167461152290366
+    },
+    {
+      "feature": "data_volume",
+      "absolute_weight": 0.3159015402711543
+    },
+    {
+      "feature": "privilege",
+      "absolute_weight": 0.2608905459052531
+    }
+  ],
+  "paths": [
+    {
+      "chain_id": "devi-00",
+      "scenario": "device_code_phishing",
+      "identity": "user-001",
+      "event_count": 6,
+      "detected_stage": "Initial Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.999906179180057,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.7340255818746907,
+          "severity": "High",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.7384192134224881,
+          "severity": "High",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.7360893095077119,
+          "severity": "High",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.8558154487011486,
+          "severity": "Critical",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.9707700623865573,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.999906179180057,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-01",
+      "scenario": "device_code_phishing",
+      "identity": "user-004",
+      "event_count": 6,
+      "detected_stage": "Initial Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.999927574903707,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.734690699492534,
+          "severity": "High",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.7371789192789733,
+          "severity": "High",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.7372117115946243,
+          "severity": "High",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.8558641383246883,
+          "severity": "Critical",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.999927574903707,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.9707762822037047,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-02",
+      "scenario": "device_code_phishing",
+      "identity": "user-007",
+      "event_count": 6,
+      "detected_stage": "Initial Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9998985454349785,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.7341175306419211,
+          "severity": "High",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.7386531255812238,
+          "severity": "High",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.7382605605540569,
+          "severity": "High",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.8557631189525678,
+          "severity": "Critical",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.9710164824560232,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9998985454349785,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-03",
+      "scenario": "device_code_phishing",
+      "identity": "user-010",
+      "event_count": 6,
+      "detected_stage": "Initial Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9996442188124499,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.5383278218078301,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.5741656352046742,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.5926992266190986,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.738775507078308,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9996442188124499,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.8524605881129789,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-04",
+      "scenario": "device_code_phishing",
+      "identity": "user-013",
+      "event_count": 6,
+      "detected_stage": "Initial Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9992706435382824,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.5700538912587889,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.6011930976583378,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.737921064604679,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.5885583133267737,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.8520338586666826,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9992706435382824,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-05",
+      "scenario": "device_code_phishing",
+      "identity": "user-016",
+      "event_count": 6,
+      "detected_stage": "Initial Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9995008094100393,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.5533937430219965,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.5837403743746474,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.5868970632499331,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.8533650288479393,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9995008094100393,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.7373006620583534,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-06",
+      "scenario": "device_code_phishing",
+      "identity": "user-019",
+      "event_count": 6,
+      "detected_stage": "Initial Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9995112080231169,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.5560016336185357,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.5893860086709606,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.6050801125463251,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.8528860031650745,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.7384047046122443,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9995112080231169,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-07",
+      "scenario": "device_code_phishing",
+      "identity": "user-022",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 1,
+      "minutes_to_detect": 7.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9993641736611014,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.5059503781880105,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.5898756820320845,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.5927292223003663,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.7371053185402958,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9993641736611014,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.853581739699732,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-08",
+      "scenario": "device_code_phishing",
+      "identity": "user-025",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 1,
+      "minutes_to_detect": 9.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9994936259585441,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.5181877540403992,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.5716478371175393,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.5973067463014488,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.7382363589727787,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9994936259585441,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.8532496761438007,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-09",
+      "scenario": "device_code_phishing",
+      "identity": "user-028",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 1,
+      "minutes_to_detect": 8.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.999667407361651,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.49732467436156225,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.5889976667112903,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.5851391603047611,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.7382310729324024,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.8526662196724485,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.999667407361651,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-10",
+      "scenario": "device_code_phishing",
+      "identity": "user-031",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 1,
+      "minutes_to_detect": 11.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9993772924863288,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.512174686734254,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.592019515251658,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.5803704440724905,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.7379478420618203,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9993772924863288,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.8518402051491886,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "devi-11",
+      "scenario": "device_code_phishing",
+      "identity": "user-034",
+      "event_count": 6,
+      "detected_stage": "Initial Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9993689789508337,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_requested",
+          "score": 0.5707364893869313,
+          "severity": "Medium",
+          "mitre": "T1566",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "device_code_token_replayed",
+          "score": 0.5665768630883729,
+          "severity": "Medium",
+          "mitre": "T1528",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "SaaS",
+          "asset": "mailbox",
+          "action": "enumerate_mailbox_rules",
+          "score": 0.5999304671848164,
+          "severity": "Medium",
+          "mitre": "T1087",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Collection",
+          "source": "SaaS",
+          "asset": "document-store",
+          "action": "bulk_document_download",
+          "score": 0.853772084670933,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "add_privileged_oauth_scope",
+          "score": 0.7376600720937904,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "external-storage",
+          "action": "exfiltrate_archive",
+          "score": 0.9993689789508337,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-00",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-002",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9999817348216998,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.8250100481179741,
+          "severity": "Critical",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.7402657057949109,
+          "severity": "High",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.8269294539188441,
+          "severity": "Critical",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.975977106594192,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.8559793485676329,
+          "severity": "Critical",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9999817348216998,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-01",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-005",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.999984169778077,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.7151587559289025,
+          "severity": "High",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.7400284230972705,
+          "severity": "High",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.8268543087114169,
+          "severity": "Critical",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.9759639626349775,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.8559839051446949,
+          "severity": "Critical",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.999984169778077,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-02",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-008",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9999788558129714,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.8257867633997247,
+          "severity": "Critical",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.7392920053739225,
+          "severity": "High",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.9759798548885943,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.8269252576366255,
+          "severity": "Critical",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.8559814247977454,
+          "severity": "Critical",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9999788558129714,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-03",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-011",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9998384661643691,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.6949305349134078,
+          "severity": "High",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.6112403851237623,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.7057237824905807,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9998384661643691,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.8603537481993616,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7405439918506582,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-04",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-014",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9999125171451276,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.6853106651860291,
+          "severity": "High",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.6153426654502541,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.7052337087373666,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.8604304763969987,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9999125171451276,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7405556065196633,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-05",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-017",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9998832357817682,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.5679632643363117,
+          "severity": "Medium",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.6134055201593663,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.7082291554049156,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.860577520650692,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7404054213753671,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9998832357817682,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-06",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-020",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9998824606859685,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.5568199973123814,
+          "severity": "Medium",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.6109274515225616,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.7077794314873587,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.860429411205811,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7405466481005463,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9998824606859685,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-07",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-023",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9998186201670063,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.6987825010259392,
+          "severity": "High",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.615872833415478,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.7055840586122821,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9998186201670063,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.8602590575048699,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7404446727825308,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-08",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-026",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9999032973955786,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.6877513592003246,
+          "severity": "High",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.6101023298182394,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.7066243749364303,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7406584935282823,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.8602935926894709,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9999032973955786,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-09",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-029",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9998128003266085,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.5725953030376068,
+          "severity": "Medium",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.618983485461295,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.703421994875052,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.8602243345510174,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9998128003266085,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7405782315243234,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-10",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-032",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9999121132294085,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.6833227396574864,
+          "severity": "High",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.6131446117262142,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.7035841475411277,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.860554955605233,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7406466145790236,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9999121132294085,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "info-11",
+      "scenario": "infostealer_cloud_pivot",
+      "identity": "user-035",
+      "event_count": 6,
+      "detected_stage": "Credential Access",
+      "detection_index": 0,
+      "minutes_to_detect": 0.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9998849037563641,
+      "stages": [
+        {
+          "stage": "Credential Access",
+          "source": "Endpoint",
+          "asset": "developer-laptop",
+          "action": "browser_credential_store_read",
+          "score": 0.6828427610975147,
+          "severity": "High",
+          "mitre": "T1555",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Initial Access",
+          "source": "Identity",
+          "asset": "workforce-sso",
+          "action": "session_cookie_replayed",
+          "score": 0.6124218736483287,
+          "severity": "Medium",
+          "mitre": "T1539",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Discovery",
+          "source": "GitHub",
+          "asset": "engineering-repo",
+          "action": "enumerate_ci_secrets",
+          "score": 0.7061939488653644,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "\u2014"
+        },
+        {
+          "stage": "Lateral Movement",
+          "source": "Cloud",
+          "asset": "oidc-trust",
+          "action": "assume_oidc_deployment_role",
+          "score": 0.860399081972912,
+          "severity": "Critical",
+          "mitre": "T1550",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "create_admin_role",
+          "score": 0.7405028495846943,
+          "severity": "High",
+          "mitre": "T1098",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "Cloud",
+          "asset": "customer-data",
+          "action": "export_customer_dataset",
+          "score": 0.9998849037563641,
+          "severity": "Critical",
+          "mitre": "T1530",
+          "agentic_risk": "ASI03"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-00",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-003",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 11.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9996778962174444,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.40700550605559477,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7358757736321699,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7391894271102665,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.9995601543755939,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6330553609411687,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9996778962174444,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-01",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-006",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 10.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9993357678749196,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.3992929309848979,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7374071630713279,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7391932590520389,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6333263678266625,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.8836955883955934,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9993357678749196,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-02",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-009",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 10.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9965939543941128,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.23358507848580717,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7183227381348052,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7295728876135819,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.622278691323587,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.8761949793885591,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9965939543941128,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-03",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-012",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 7.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9967454123314312,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.29296106221134294,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.729453381406449,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7278309589596048,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.8780768849312064,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9967454123314312,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.620483447151116,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-04",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-015",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 6.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.99710478831608,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.2019694342585406,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7228550025330313,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7272154696321397,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6282486094510462,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.875926479855309,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.99710478831608,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-05",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-018",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 10.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9975174420470546,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.2266381255337102,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7233519632278469,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.726537502281706,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6284129065535968,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.8756885805954641,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9975174420470546,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-06",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-021",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 8.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9949528720320295,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.16994885006318597,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7189573469848562,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.725874578467216,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6256822898499945,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9934051869876063,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.9949528720320295,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-07",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-024",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 8.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9961846394683156,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.17884361566607063,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7148931046492146,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7309579779079384,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6283767508288498,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.880573875230939,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9961846394683156,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-08",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-027",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 10.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9971585388460429,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.260705997140263,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7183695020847489,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7262093119989501,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6257124420824127,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.8761270450533291,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9971585388460429,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-09",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-030",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 8.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9947033570900664,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.24234448145926388,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7195215598932763,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7284696479302817,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6263886399977886,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.9947033570900664,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9945605405838142,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-10",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-033",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 11.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9940520073138269,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.27833650878872074,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7308262402268332,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7273515484124058,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6255157983974171,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9940520073138269,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.9938587733389868,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        }
+      ]
+    },
+    {
+      "chain_id": "prom-11",
+      "scenario": "prompt_injection_tool_abuse",
+      "identity": "user-036",
+      "event_count": 6,
+      "detected_stage": "Execution",
+      "detection_index": 1,
+      "minutes_to_detect": 10.0,
+      "prevented_before_exfiltration": true,
+      "max_score": 0.9966496481246735,
+      "stages": [
+        {
+          "stage": "Initial Access",
+          "source": "AI Agent",
+          "asset": "retrieval-pipeline",
+          "action": "retrieve_untrusted_document",
+          "score": 0.2591885049120451,
+          "severity": "Low",
+          "mitre": "T1204",
+          "agentic_risk": "ASI01"
+        },
+        {
+          "stage": "Execution",
+          "source": "AI Agent",
+          "asset": "tool-gateway",
+          "action": "invoke_unapproved_secret_tool",
+          "score": 0.7165439406437956,
+          "severity": "High",
+          "mitre": "T1059",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Credential Access",
+          "source": "AI Agent",
+          "asset": "secret-manager",
+          "action": "list_service_credentials",
+          "score": 0.7322126320862288,
+          "severity": "High",
+          "mitre": "T1552",
+          "agentic_risk": "ASI03"
+        },
+        {
+          "stage": "Privilege Escalation",
+          "source": "Cloud",
+          "asset": "iam-control-plane",
+          "action": "agent_chain_admin_role",
+          "score": 0.6240340634420203,
+          "severity": "Medium",
+          "mitre": "T1098",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Collection",
+          "source": "AI Agent",
+          "asset": "customer-data",
+          "action": "agent_bulk_export",
+          "score": 0.8731951967823673,
+          "severity": "Critical",
+          "mitre": "T1213",
+          "agentic_risk": "ASI02"
+        },
+        {
+          "stage": "Exfiltration",
+          "source": "AI Agent",
+          "asset": "external-api",
+          "action": "agent_send_external",
+          "score": 0.9966496481246735,
+          "severity": "Critical",
+          "mitre": "T1567",
+          "agentic_risk": "ASI05"
+        }
+      ]
+    }
+  ],
+  "top_alerts": [
+    {
+      "event_id": "evt-c85302330b50",
+      "timestamp": "2026-06-05T12:45:00Z",
+      "chain_id": "info-01",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-005",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "RU",
+      "device_trust": 0.112,
+      "mfa_strength": 1,
+      "token_age_minutes": 186,
+      "privilege_level": 5,
+      "data_volume_mb": 439.136,
+      "tool_risk": 0.636,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.99997,
+      "hybrid_score": 0.999984,
+      "severity": "Critical",
+      "rule_hits": [
+        "untrusted foreign session",
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-63481d5a6726",
+      "timestamp": "2026-06-04T12:40:00Z",
+      "chain_id": "info-00",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-002",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "RU",
+      "device_trust": 0.146,
+      "mfa_strength": 1,
+      "token_age_minutes": 191,
+      "privilege_level": 5,
+      "data_volume_mb": 466.223,
+      "tool_risk": 0.636,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999965,
+      "hybrid_score": 0.999982,
+      "severity": "Critical",
+      "rule_hits": [
+        "untrusted foreign session",
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-0877154c7a68",
+      "timestamp": "2026-06-06T12:55:00Z",
+      "chain_id": "info-02",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-008",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "NL",
+      "device_trust": 0.21,
+      "mfa_strength": 1,
+      "token_age_minutes": 195,
+      "privilege_level": 5,
+      "data_volume_mb": 368.741,
+      "tool_risk": 0.651,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999959,
+      "hybrid_score": 0.999979,
+      "severity": "Critical",
+      "rule_hits": [
+        "untrusted foreign session",
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-35908db573fd",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "chain_id": "devi-01",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-004",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "BR",
+      "device_trust": 0.169,
+      "mfa_strength": 0,
+      "token_age_minutes": 183,
+      "privilege_level": 4,
+      "data_volume_mb": 280.762,
+      "tool_risk": 0.475,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999861,
+      "hybrid_score": 0.999928,
+      "severity": "Critical",
+      "rule_hits": [
+        "untrusted foreign session",
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-43085c935fc0",
+      "timestamp": "2026-06-08T12:30:00Z",
+      "chain_id": "info-04",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-014",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "RU",
+      "device_trust": 0.115,
+      "mfa_strength": 1,
+      "token_age_minutes": 195,
+      "privilege_level": 5,
+      "data_volume_mb": 407.319,
+      "tool_risk": 0.653,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999832,
+      "hybrid_score": 0.999913,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-c9d30f384cf5",
+      "timestamp": "2026-06-14T12:45:00Z",
+      "chain_id": "info-10",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-032",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "RU",
+      "device_trust": 0.151,
+      "mfa_strength": 1,
+      "token_age_minutes": 189,
+      "privilege_level": 5,
+      "data_volume_mb": 447.99,
+      "tool_risk": 0.695,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999831,
+      "hybrid_score": 0.999912,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-161b3180e1f6",
+      "timestamp": "2026-06-04T08:50:00Z",
+      "chain_id": "devi-00",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-001",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "RU",
+      "device_trust": 0.26,
+      "mfa_strength": 0,
+      "token_age_minutes": 183,
+      "privilege_level": 4,
+      "data_volume_mb": 304.548,
+      "tool_risk": 0.513,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.99982,
+      "hybrid_score": 0.999906,
+      "severity": "Critical",
+      "rule_hits": [
+        "untrusted foreign session",
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-b9096769fccc",
+      "timestamp": "2026-06-12T12:45:00Z",
+      "chain_id": "info-08",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-026",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "VN",
+      "device_trust": 0.127,
+      "mfa_strength": 1,
+      "token_age_minutes": 191,
+      "privilege_level": 5,
+      "data_volume_mb": 464.865,
+      "tool_risk": 0.659,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999814,
+      "hybrid_score": 0.999903,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-d8d8f7aedb18",
+      "timestamp": "2026-06-06T08:50:00Z",
+      "chain_id": "devi-02",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-007",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "VN",
+      "device_trust": 0.192,
+      "mfa_strength": 0,
+      "token_age_minutes": 178,
+      "privilege_level": 4,
+      "data_volume_mb": 322.296,
+      "tool_risk": 0.456,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999805,
+      "hybrid_score": 0.999899,
+      "severity": "Critical",
+      "rule_hits": [
+        "untrusted foreign session",
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-cee1e431440b",
+      "timestamp": "2026-06-15T12:50:00Z",
+      "chain_id": "info-11",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-035",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "NL",
+      "device_trust": 0.177,
+      "mfa_strength": 1,
+      "token_age_minutes": 187,
+      "privilege_level": 5,
+      "data_volume_mb": 415.587,
+      "tool_risk": 0.676,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999779,
+      "hybrid_score": 0.999885,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-582885fdbff4",
+      "timestamp": "2026-06-09T12:30:00Z",
+      "chain_id": "info-05",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-017",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "RO",
+      "device_trust": 0.144,
+      "mfa_strength": 1,
+      "token_age_minutes": 189,
+      "privilege_level": 5,
+      "data_volume_mb": 365.738,
+      "tool_risk": 0.639,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999775,
+      "hybrid_score": 0.999883,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-ca9b1151f641",
+      "timestamp": "2026-06-10T12:55:00Z",
+      "chain_id": "info-06",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-020",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "RU",
+      "device_trust": 0.164,
+      "mfa_strength": 1,
+      "token_age_minutes": 193,
+      "privilege_level": 5,
+      "data_volume_mb": 368.692,
+      "tool_risk": 0.648,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999774,
+      "hybrid_score": 0.999882,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-e83d5a80fb48",
+      "timestamp": "2026-06-07T12:30:00Z",
+      "chain_id": "info-03",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-011",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "RU",
+      "device_trust": 0.183,
+      "mfa_strength": 1,
+      "token_age_minutes": 187,
+      "privilege_level": 5,
+      "data_volume_mb": 456.398,
+      "tool_risk": 0.633,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999689,
+      "hybrid_score": 0.999838,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-a86101841080",
+      "timestamp": "2026-06-11T12:30:00Z",
+      "chain_id": "info-07",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-023",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "RO",
+      "device_trust": 0.255,
+      "mfa_strength": 1,
+      "token_age_minutes": 195,
+      "privilege_level": 5,
+      "data_volume_mb": 397.43,
+      "tool_risk": 0.656,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999651,
+      "hybrid_score": 0.999819,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-4c43eea143ea",
+      "timestamp": "2026-06-13T12:35:00Z",
+      "chain_id": "info-09",
+      "scenario": "infostealer_cloud_pivot",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-029",
+      "asset": "customer-data",
+      "action": "export_customer_dataset",
+      "location": "VN",
+      "device_trust": 0.249,
+      "mfa_strength": 1,
+      "token_age_minutes": 193,
+      "privilege_level": 5,
+      "data_volume_mb": 369.487,
+      "tool_risk": 0.647,
+      "is_attack": 1,
+      "mitre_technique": "T1530",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.99964,
+      "hybrid_score": 0.999813,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-fa1ab4eabce1",
+      "timestamp": "2026-06-04T16:45:00Z",
+      "chain_id": "prom-00",
+      "scenario": "prompt_injection_tool_abuse",
+      "stage": "Exfiltration",
+      "source": "AI Agent",
+      "identity": "user-003",
+      "asset": "external-api",
+      "action": "agent_send_external",
+      "location": "IN",
+      "device_trust": 0.651,
+      "mfa_strength": 2,
+      "token_age_minutes": 53,
+      "privilege_level": 5,
+      "data_volume_mb": 303.242,
+      "tool_risk": 1.0,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI05",
+      "rule_score": 1.0,
+      "model_probability": 0.999381,
+      "hybrid_score": 0.999678,
+      "severity": "Critical",
+      "rule_hits": [
+        "privilege escalation",
+        "high-risk agent tool call",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-111229e33b76",
+      "timestamp": "2026-06-13T08:50:00Z",
+      "chain_id": "devi-09",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-028",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "VN",
+      "device_trust": 0.127,
+      "mfa_strength": 0,
+      "token_age_minutes": 173,
+      "privilege_level": 4,
+      "data_volume_mb": 294.214,
+      "tool_risk": 0.519,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.99936,
+      "hybrid_score": 0.999667,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-7cba7683ac75",
+      "timestamp": "2026-06-07T08:35:00Z",
+      "chain_id": "devi-03",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-010",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "RU",
+      "device_trust": 0.152,
+      "mfa_strength": 0,
+      "token_age_minutes": 178,
+      "privilege_level": 4,
+      "data_volume_mb": 278.799,
+      "tool_risk": 0.519,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999316,
+      "hybrid_score": 0.999644,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-0c4e1f939251",
+      "timestamp": "2026-06-04T16:32:00Z",
+      "chain_id": "prom-00",
+      "scenario": "prompt_injection_tool_abuse",
+      "stage": "Collection",
+      "source": "AI Agent",
+      "identity": "user-003",
+      "asset": "customer-data",
+      "action": "agent_bulk_export",
+      "location": "IN",
+      "device_trust": 0.708,
+      "mfa_strength": 2,
+      "token_age_minutes": 42,
+      "privilege_level": 5,
+      "data_volume_mb": 186.547,
+      "tool_risk": 1.0,
+      "is_attack": 1,
+      "mitre_technique": "T1213",
+      "agentic_risk": "ASI02",
+      "rule_score": 1.0,
+      "model_probability": 0.999154,
+      "hybrid_score": 0.99956,
+      "severity": "Critical",
+      "rule_hits": [
+        "privilege escalation",
+        "high-risk agent tool call",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-c95e3b4a00c8",
+      "timestamp": "2026-06-10T08:55:00Z",
+      "chain_id": "devi-06",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-019",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "RU",
+      "device_trust": 0.174,
+      "mfa_strength": 0,
+      "token_age_minutes": 179,
+      "privilege_level": 4,
+      "data_volume_mb": 254.959,
+      "tool_risk": 0.484,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.99906,
+      "hybrid_score": 0.999511,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-7322bc641d83",
+      "timestamp": "2026-06-09T08:30:00Z",
+      "chain_id": "devi-05",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-016",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "BR",
+      "device_trust": 0.212,
+      "mfa_strength": 0,
+      "token_age_minutes": 183,
+      "privilege_level": 4,
+      "data_volume_mb": 316.541,
+      "tool_risk": 0.513,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.99904,
+      "hybrid_score": 0.999501,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-9015abff90a7",
+      "timestamp": "2026-06-12T08:40:00Z",
+      "chain_id": "devi-08",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-025",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "BR",
+      "device_trust": 0.152,
+      "mfa_strength": 0,
+      "token_age_minutes": 182,
+      "privilege_level": 4,
+      "data_volume_mb": 263.916,
+      "tool_risk": 0.457,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.999026,
+      "hybrid_score": 0.999494,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-c47fc2f62337",
+      "timestamp": "2026-06-14T08:35:00Z",
+      "chain_id": "devi-10",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-031",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "RU",
+      "device_trust": 0.199,
+      "mfa_strength": 0,
+      "token_age_minutes": 172,
+      "privilege_level": 4,
+      "data_volume_mb": 260.077,
+      "tool_risk": 0.48,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.998802,
+      "hybrid_score": 0.999377,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-b5f968da7489",
+      "timestamp": "2026-06-15T08:35:00Z",
+      "chain_id": "devi-11",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-034",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "NL",
+      "device_trust": 0.228,
+      "mfa_strength": 0,
+      "token_age_minutes": 183,
+      "privilege_level": 4,
+      "data_volume_mb": 303.048,
+      "tool_risk": 0.489,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.998786,
+      "hybrid_score": 0.999369,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    },
+    {
+      "event_id": "evt-4ccb952f5cc9",
+      "timestamp": "2026-06-11T08:30:00Z",
+      "chain_id": "devi-07",
+      "scenario": "device_code_phishing",
+      "stage": "Exfiltration",
+      "source": "Cloud",
+      "identity": "user-022",
+      "asset": "external-storage",
+      "action": "exfiltrate_archive",
+      "location": "NL",
+      "device_trust": 0.234,
+      "mfa_strength": 0,
+      "token_age_minutes": 180,
+      "privilege_level": 4,
+      "data_volume_mb": 297.252,
+      "tool_risk": 0.497,
+      "is_attack": 1,
+      "mitre_technique": "T1567",
+      "agentic_risk": "ASI03",
+      "rule_score": 1.0,
+      "model_probability": 0.998777,
+      "hybrid_score": 0.999364,
+      "severity": "Critical",
+      "rule_hits": [
+        "weak-MFA token replay",
+        "privilege escalation",
+        "bulk data movement",
+        "probable exfiltration"
+      ],
+      "recommendation": "Suspend the session, revoke tokens, preserve logs, and isolate the affected identity."
+    }
+  ]
+}
