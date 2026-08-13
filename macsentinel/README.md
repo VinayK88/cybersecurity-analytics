@@ -5,11 +5,12 @@
 ### Privacy-preserving macOS threat detection with provenance graphs and streaming ML
 
 [![macOS](https://img.shields.io/badge/macOS-security-111827?logo=apple&logoColor=white)](https://support.apple.com/guide/security/welcome/web)
+[![Swift](https://img.shields.io/badge/Swift-6-F05138?logo=swift&logoColor=white)](sensor-swift/)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-analyst%20app-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Data](https://img.shields.io/badge/Data-synthetic%20%26%20offline-7B61FF)](#safety-and-platform-boundary)
 
-**Endpoint telemetry · Temporal sequences · Provenance graphs · Drift · Adversarial robustness**
+**Native telemetry · Privacy filtering · Temporal sequences · Provenance graphs · Drift · Adversarial robustness**
 
 [Run the app](#quick-start) · [Explore notebooks](#notebook-lab) · [Review architecture](#architecture) · [Understand safety](#safety-and-platform-boundary)
 
@@ -35,7 +36,10 @@ This is an independent educational project. It is not affiliated with or endorse
 
 ```mermaid
 flowchart LR
-    ES["Synthetic macOS events"] --> NORM["Privacy-safe normalization"]
+    REPLAY["Synthetic CSV replay"] --> SENSOR["Swift native sensor"]
+    AUTH["Authorized ES metadata"] --> SENSOR
+    SENSOR --> NORM["Privacy-safe normalization"]
+    SENSOR --> PERF["Drops + latency + memory"]
     NORM --> SESSION["Bounded event sessions"]
     SESSION --> RULES["Transparent risk score"]
     SESSION --> ANOMALY["Robust anomaly model"]
@@ -45,6 +49,20 @@ flowchart LR
     QUEUE --> APP["Streamlit investigation app"]
     QUEUE --> STRESS["Drift + mimicry release gates"]
 ```
+
+## Native Swift sensor
+
+The [MacSentinel Native Sensor](sensor-swift/) adds the systems layer that sits before the Python analytics stack:
+
+- Swift 6 typed event ingestion and CSV replay
+- Salted host, user, session, and target tokens
+- Bounded queues with explicit overflow behavior
+- Batched normalized JSONL output
+- Zero-drop and privacy release gates
+- Throughput, p50/p95 latency, peak-memory, and queue-pressure reporting
+- A typed Endpoint Security metadata boundary that fails closed without explicit authorization
+
+Its checked-in release benchmark processes all **2,520 events with zero drops**, no raw identifiers or targets in output, approximately **2,645 events/s**, **479 µs p95** privacy-normalization latency, and **11.4 MB** peak resident memory on the recorded arm64 development run. These are synthetic replay measurements, not production Endpoint Security claims.
 
 ## Analyst app
 
@@ -98,6 +116,14 @@ python -m macsentinel.validate_notebooks
 python -m unittest discover -s macsentinel/tests -v
 ```
 
+Compile and verify the native sensor:
+
+```bash
+swift run --package-path macsentinel/sensor-swift --configuration release \
+  macsentinel-sensor self-test \
+  --input macsentinel/data/synthetic_macos_events.csv
+```
+
 ## Detection stories
 
 The fixture contains 420 sessions across 30 pseudonymous Macs. Six attack stories are mixed with benign user and administrator activity:
@@ -127,7 +153,7 @@ All domains use the reserved `.example` namespace, and all filenames are inert s
 
 ## Safety and platform boundary
 
-Apple's Endpoint Security entitlement is restricted. MacSentinel therefore does **not** ship a privileged collector. The public project uses deterministic synthetic fixtures and documents how an authorized `eslogger` or Endpoint Security adapter could replace the reader.
+Apple's Endpoint Security entitlement is restricted. MacSentinel therefore does **not** create a privileged `es_client_t` in the public build. The Swift package ships a deterministic replay source plus an executable, typed boundary through which an approved Endpoint Security client can supply authorized metadata.
 
 Before using real telemetry:
 
@@ -141,6 +167,7 @@ Before using real telemetry:
 
 ```text
 macsentinel/
+├── sensor-swift/                # Swift ingestion, privacy, buffering, benchmarks
 ├── app.py                       # Streamlit analyst workbench
 ├── core.py                      # telemetry, features, models, stress tests
 ├── visuals.py                   # dependency-light PNG chart renderer
@@ -149,8 +176,7 @@ macsentinel/
 ├── notebooks/                   # six executed notebooks
 ├── assets/
 │   └── macsentinel-dashboard.png
-├── tests/
-│   └── test_core.py
+├── tests/                       # Python core and app smoke tests
 ├── build_notebooks.py
 ├── validate_notebooks.py
 └── render_preview.py
