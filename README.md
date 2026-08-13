@@ -10,6 +10,7 @@
 [![Pandas](https://img.shields.io/badge/Pandas-2%2B-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.5%2B-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.9%2B-11557C)](https://matplotlib.org/)
+[![Swift](https://img.shields.io/badge/Swift-native%20macOS%20sensor-F05138?logo=swift&logoColor=white)](macsentinel/sensor-swift/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-analyst%20app-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Projects](https://img.shields.io/badge/Notebooks-31-2088FF)](#project-catalog)
 [![Data](https://img.shields.io/badge/Data-synthetic%20%26%20offline-7B61FF)](#safety-and-scope)
@@ -87,7 +88,7 @@ flowchart LR
 
 [![MacSentinel dashboard with macOS threat scores and scenario analytics](macsentinel/assets/macsentinel-dashboard.png)](macsentinel/README.md)
 
-Use the interactive dashboard to filter synthetic Mac telemetry, tune the alert threshold, inspect an evidence graph, and open a prioritized investigation queue. The accompanying notebooks expose every feature, model, limitation, and robustness gate.
+Use the interactive dashboard to filter synthetic Mac telemetry, tune the alert threshold, inspect an evidence graph, and open a prioritized investigation queue. A compiled [Swift native sensor](macsentinel/sensor-swift/) adds privacy filtering, bounded buffering, performance benchmarks, and an authorized Endpoint Security metadata boundary. The accompanying notebooks expose every feature, model, limitation, and robustness gate.
 
 ## Quick start
 
@@ -283,6 +284,9 @@ python -m macsentinel.build_notebooks
 python -m macsentinel.validate_notebooks
 python -m unittest discover -s macsentinel/tests -v
 streamlit run macsentinel/app.py
+swift run --package-path macsentinel/sensor-swift --configuration release \
+  macsentinel-sensor self-test \
+  --input macsentinel/data/synthetic_macos_events.csv
 ```
 
 The validators:
@@ -344,6 +348,7 @@ High scores on synthetic data do not establish real-world effectiveness. Before 
 │   ├── validate_notebooks.py
 │   └── README.md
 ├── macsentinel/
+│   ├── sensor-swift/            # Native ingestion, privacy, buffering, benchmarks
 │   ├── app.py                    # Interactive macOS analyst workbench
 │   ├── core.py                   # Synthetic telemetry + lightweight ML
 │   ├── visuals.py                # GitHub-friendly visual renderer
