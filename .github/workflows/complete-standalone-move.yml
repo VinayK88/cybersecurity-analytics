@@ -1,0 +1,27 @@
+name: Complete standalone project move
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/complete-standalone-move.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out portfolio repository
+        uses: actions/checkout@v6
+
+      - name: Remove promoted project folders
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm -r attackpath-ai macsentinel
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Move flagship projects to standalone repositories"
+          git push
