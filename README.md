@@ -2,7 +2,7 @@
 
 # Cybersecurity Analytics & AI
 
-### 32 reproducible notebooks plus analyst apps for cybersecurity analytics, ML, AI safety, identity, and macOS security
+### 25 notebooks here plus two standalone flagship projects for cybersecurity analytics, ML, AI safety, identity, and macOS security
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/JupyterLab-4%2B-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -10,7 +10,7 @@
 [![Pandas](https://img.shields.io/badge/Pandas-2%2B-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.5%2B-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.9%2B-11557C)](https://matplotlib.org/)
-[![Swift](https://img.shields.io/badge/Swift-native%20macOS%20sensor-F05138?logo=swift&logoColor=white)](macsentinel/sensor-swift/)
+[![Swift](https://img.shields.io/badge/Swift-native%20macOS%20sensor-F05138?logo=swift&logoColor=white)](https://github.com/VinayK88/macsentinel/tree/main/sensor-swift)
 [![Streamlit](https://img.shields.io/badge/Streamlit-analyst%20app-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Projects](https://img.shields.io/badge/Notebooks-32-2088FF)](#project-catalog)
 [![Data](https://img.shields.io/badge/Data-synthetic%20%26%20offline-7B61FF)](#safety-and-scope)
@@ -49,15 +49,15 @@ flowchart LR
     style HUMAN fill:#dbeafe,stroke:#3157a4,color:#172033
 ```
 
-### What are all the folders?
+### What are all the folders and standalone projects?
 
 | Part | Like you're 5 | What it teaches |
 | --- | --- | --- |
 | `notebooks/` | Detective practice books | Spot unusual logins, networks, phishing, malware clues, and risky cloud access |
 | `osint-analytics/` | Looking for safe clues in public places | Connect public infrastructure and evidence without exposing private people |
 | `purple-team/` | A supervised fire drill | Let red and blue teams safely test whether defenses notice pretend attacks |
-| `macsentinel/` | A careful guard for a Mac | Study macOS events, privacy filters, streaming detection, and attack graphs |
-| `attackpath-ai/` | A map of footprints through many rooms | Join identity, endpoint, GitHub, cloud, SaaS, and AI-agent clues into one attack story |
+| [MacSentinel](https://github.com/VinayK88/macsentinel) | A careful guard for a Mac | Study macOS events, privacy filters, streaming detection, and attack graphs |
+| [AttackPath AI](https://github.com/VinayK88/attackpath-ai) | A map of footprints through many rooms | Join identity, endpoint, GitHub, cloud, SaaS, and AI-agent clues into one attack story |
 | Streamlit apps | The detective's control room | Filter alerts, inspect evidence, tune thresholds, and choose what to review first |
 
 ### What happens in one practice case?
@@ -130,21 +130,21 @@ flowchart LR
 | `notebooks/` | 10 | Defensive cyber telemetry, ML, prioritization, graphs, and AI safety |
 | `osint-analytics/notebooks/` | 10 | Ethical infrastructure, public-source, privacy, and evidence-fusion analytics |
 | `purple-team/notebooks/` | 5 | Safe red-team planning, blue-team detection engineering, and joint validation |
-| `macsentinel/notebooks/` | 6 | macOS telemetry, provenance graphs, streaming ML, and adversarial robustness |
-| `attackpath-ai/notebooks/` | 1 | Identity compromise, cloud pivots, agent-tool abuse, attack-path metrics |
-| **Total** | **32** | Fully synthetic and offline, plus interactive analyst apps |
+| [MacSentinel](https://github.com/VinayK88/macsentinel/tree/main/notebooks) · standalone | 6 | macOS telemetry, provenance graphs, streaming ML, and adversarial robustness |
+| [AttackPath AI](https://github.com/VinayK88/attackpath-ai/tree/main/notebooks) · standalone | 1 | Identity compromise, cloud pivots, agent-tool abuse, attack-path metrics |
+| **Portfolio total** | **32** | Fully synthetic and offline, plus interactive analyst apps |
 
 ### Flagship analyst app · MacSentinel
 
-[![MacSentinel dashboard with macOS threat scores and scenario analytics](macsentinel/assets/macsentinel-dashboard.png)](macsentinel/README.md)
+[![MacSentinel dashboard with macOS threat scores and scenario analytics](https://raw.githubusercontent.com/VinayK88/macsentinel/main/assets/macsentinel-dashboard.png)](https://github.com/VinayK88/macsentinel)
 
-Use the interactive dashboard to filter synthetic Mac telemetry, tune the alert threshold, inspect an evidence graph, and open a prioritized investigation queue. A compiled [Swift native sensor](macsentinel/sensor-swift/) adds privacy filtering, bounded buffering, performance benchmarks, and an authorized Endpoint Security metadata boundary. The accompanying notebooks expose every feature, model, limitation, and robustness gate.
+Use the standalone [MacSentinel repository](https://github.com/VinayK88/macsentinel) to filter synthetic Mac telemetry, tune the alert threshold, inspect an evidence graph, and open a prioritized investigation queue. Its compiled [Swift native sensor](https://github.com/VinayK88/macsentinel/tree/main/sensor-swift) adds privacy filtering, bounded buffering, performance benchmarks, and an authorized Endpoint Security metadata boundary. The accompanying notebooks expose every feature, model, limitation, and robustness gate.
 
 ### Current-threat lab · AttackPath AI
 
-[![AttackPath AI identity and agentic-attack detection dashboard](attackpath-ai/assets/dashboard-preview.svg)](attackpath-ai/README.md)
+[![AttackPath AI identity and agentic-attack detection dashboard](https://raw.githubusercontent.com/VinayK88/attackpath-ai/main/assets/dashboard-preview.svg)](https://github.com/VinayK88/attackpath-ai)
 
-[AttackPath AI](attackpath-ai/README.md) connects synthetic identity, endpoint, GitHub, cloud, SaaS, and AI-agent activity into complete attack paths. It combines explainable rules with an inspectable logistic model, maps findings to MITRE ATT&CK and OWASP Agentic risks, and reports precision, recall, time-to-detect, and whether each chain is found before exfiltration.
+[AttackPath AI](https://github.com/VinayK88/attackpath-ai) connects synthetic identity, endpoint, GitHub, cloud, SaaS, and AI-agent activity into complete attack paths. It combines explainable rules with an inspectable logistic model, maps findings to MITRE ATT&CK and OWASP Agentic risks, and reports precision, recall, time-to-detect, and whether each chain is found before exfiltration.
 
 ## Quick start
 
@@ -166,7 +166,7 @@ Open a notebook, choose **Run → Run All Cells**, and review the generated tabl
 
 | # | Project | Transparent baseline | Visual / ML extension |
 | ---: | --- | --- | --- |
-| 01 | [AttackPath AI detection lab](attackpath-ai/notebooks/01_identity_agent_attack_detection.ipynb) | Cross-source rules and attack-chain reconstruction | Logistic risk model, score distribution, path timeline, confusion matrix, Streamlit SOC queue |
+| 01 | [AttackPath AI detection lab](https://github.com/VinayK88/attackpath-ai/blob/main/notebooks/01_identity_agent_attack_detection.ipynb) | Cross-source rules and attack-chain reconstruction | Logistic risk model, score distribution, path timeline, confusion matrix, Streamlit SOC queue |
 
 ### Defensive security analytics
 
@@ -197,14 +197,14 @@ Open a notebook, choose **Run → Run All Cells**, and review the generated tabl
 
 | # | Notebook | Transparent baseline | Visual / ML extension |
 | ---: | --- | --- | --- |
-| 01 | [macOS telemetry EDA](macsentinel/notebooks/01_macos_telemetry_eda.ipynb) | Schema and coverage checks | Signal matrix, scenario distribution, event timeline |
-| 02 | [Provenance graph investigation](macsentinel/notebooks/02_provenance_graph_investigation.ipynb) | Directed entity edge list | Investigation graph, centrality, message passing |
-| 03 | [Streaming anomaly detection](macsentinel/notebooks/03_streaming_anomaly_detection.ipynb) | Robust multivariate anomaly score | Host holdout, logistic benchmark, capacity-aware threshold |
-| 04 | [GRU sequence detection](macsentinel/notebooks/04_gru_sequence_detection.ipynb) | Inspectable GRU cell | Learned detection head, embedding projection, scenario recall |
-| 05 | [Temporal graph ML](macsentinel/notebooks/05_temporal_graph_ml.ipynb) | Iterative message passing | Graph-augmented model, explanations, analyst queue |
-| 06 | [Adversarial robustness and drift](macsentinel/notebooks/06_adversarial_robustness_and_drift.ipynb) | PSI and release gates | Concept drift, mimicry attack, privacy checks |
+| 01 | [macOS telemetry EDA](https://github.com/VinayK88/macsentinel/blob/main/notebooks/01_macos_telemetry_eda.ipynb) | Schema and coverage checks | Signal matrix, scenario distribution, event timeline |
+| 02 | [Provenance graph investigation](https://github.com/VinayK88/macsentinel/blob/main/notebooks/02_provenance_graph_investigation.ipynb) | Directed entity edge list | Investigation graph, centrality, message passing |
+| 03 | [Streaming anomaly detection](https://github.com/VinayK88/macsentinel/blob/main/notebooks/03_streaming_anomaly_detection.ipynb) | Robust multivariate anomaly score | Host holdout, logistic benchmark, capacity-aware threshold |
+| 04 | [GRU sequence detection](https://github.com/VinayK88/macsentinel/blob/main/notebooks/04_gru_sequence_detection.ipynb) | Inspectable GRU cell | Learned detection head, embedding projection, scenario recall |
+| 05 | [Temporal graph ML](https://github.com/VinayK88/macsentinel/blob/main/notebooks/05_temporal_graph_ml.ipynb) | Iterative message passing | Graph-augmented model, explanations, analyst queue |
+| 06 | [Adversarial robustness and drift](https://github.com/VinayK88/macsentinel/blob/main/notebooks/06_adversarial_robustness_and_drift.ipynb) | PSI and release gates | Concept drift, mimicry attack, privacy checks |
 
-Open the [MacSentinel guide](macsentinel/README.md) for the Streamlit app, architecture, model card, and Apple platform boundary.
+Open the standalone [MacSentinel guide](https://github.com/VinayK88/macsentinel) for the Streamlit app, architecture, model card, and Apple platform boundary.
 
 ### Ethical OSINT analytics
 
@@ -340,17 +340,12 @@ python purple-team/build_notebooks.py
 python purple-team/validate_notebooks.py
 ```
 
-### MacSentinel macOS security lab
+### Standalone flagship labs
 
-```bash
-python -m macsentinel.build_notebooks
-python -m macsentinel.validate_notebooks
-python -m unittest discover -s macsentinel/tests -v
-streamlit run macsentinel/app.py
-swift run --package-path macsentinel/sensor-swift --configuration release \
-  macsentinel-sensor self-test \
-  --input macsentinel/data/synthetic_macos_events.csv
-```
+MacSentinel and AttackPath AI now have independent setup, validation, CI, notebooks, and app instructions:
+
+- [MacSentinel](https://github.com/VinayK88/macsentinel)
+- [AttackPath AI](https://github.com/VinayK88/attackpath-ai)
 
 The validators:
 
@@ -410,18 +405,11 @@ High scores on synthetic data do not establish real-world effectiveness. Before 
 │   ├── build_notebooks.py
 │   ├── validate_notebooks.py
 │   └── README.md
-├── macsentinel/
-│   ├── sensor-swift/            # Native ingestion, privacy, buffering, benchmarks
-│   ├── app.py                    # Interactive macOS analyst workbench
-│   ├── core.py                   # Synthetic telemetry + lightweight ML
-│   ├── visuals.py                # GitHub-friendly visual renderer
-│   ├── notebooks/                # 6 executed macOS security notebooks
-│   ├── data/                     # Deterministic synthetic fixture
-│   ├── tests/                    # Core, privacy, leakage, and robustness checks
-│   └── README.md
 ├── requirements.txt
 └── README.md
 ```
+
+The flagship [MacSentinel](https://github.com/VinayK88/macsentinel) and [AttackPath AI](https://github.com/VinayK88/attackpath-ai) projects now live in their own repositories.
 
 ## Extending a project
 
