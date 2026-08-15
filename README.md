@@ -27,6 +27,16 @@ A portfolio of Jupyter notebook projects spanning identity, network, email, DNS,
 
 Every notebook is deterministic, runs offline, and uses synthetic non-sensitive data. Each one pairs an inspectable NumPy/Pandas baseline with polished static visuals, a project-appropriate ML or graph extension, concise analyst takeaways, executable checks, and practical next steps.
 
+## 60-second reviewer path
+
+Short on time? Review the collection in this order:
+
+1. [Understand the complete portfolio in plain language](#explain-the-whole-project-like-im-5).
+2. [Scan the portfolio map](#portfolio-at-a-glance).
+3. [Browse all notebook projects](#project-catalog).
+4. [Choose a project by security goal](#choose-a-project).
+5. [Run the notebooks locally](#quick-start).
+
 ## Explain the whole project like I'm 5
 
 Imagine computers are a big town. Sometimes the town gets strange visitors, fake messages, stolen keys, or mischievous robots.
