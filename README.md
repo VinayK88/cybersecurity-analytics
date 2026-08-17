@@ -23,6 +23,8 @@
 
 ---
 
+![Cybersecurity Analytics & AI dashboard preview](assets/dashboard-preview.svg)
+
 A portfolio of Jupyter notebook projects spanning identity, network, email, DNS, endpoint, SIEM, threat intelligence, malware metadata, LLM security, cloud IAM, ethical open-source intelligence, safe red/blue-team validation, macOS security research, and cross-surface identity and agentic-attack detection.
 
 Every notebook is deterministic, runs offline, and uses synthetic non-sensitive data. Each one pairs an inspectable NumPy/Pandas baseline with polished static visuals, a project-appropriate ML or graph extension, concise analyst takeaways, executable checks, and practical next steps.
@@ -117,7 +119,6 @@ flowchart LR
 
     GRAPH --> CTI["Threat-intelligence paths"]
     AI --> INJECTION["Prompt-injection detection"]
-
     OSINT --> INFRA["Domain / certificate / DNS"]
     OSINT --> PEOPLE["Privacy-preserving entity resolution"]
     OSINT --> FUSION["Narratives + incident timelines"]
